@@ -9,8 +9,9 @@ class XmlToSliml
 
   attr_reader :to_s
 
-  def initialize(obj)
+  def initialize(obj, spacer: '  ')
 
+    @spacer = spacer
     @to_s = ''
     doc = (obj.is_a?(Rexle) or obj.is_a?(Rexle::Element)) ? obj : Rexle.new(obj)
     @to_s << scanbuild(doc.to_a)    
@@ -41,7 +42,7 @@ class XmlToSliml
       text = children
     end
 
-    pad = '  ' * indent
+    pad = @spacer * indent
 
     buffer = pad + name
     buffer << ' ' + fa(attributes) if attributes.any?
