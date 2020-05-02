@@ -24,7 +24,7 @@ class XmlToSliml
   #
   def fa(h)
 
-    "{%s}" % h.map {|k, v| "%s: %s" % [k, v.inspect]}.join(', ')
+    "{%s}" % h.map {|k, v| "%s: %s" % [k, v.inspect]}.join(' ')
 
   end
 
